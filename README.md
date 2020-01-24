@@ -2,6 +2,13 @@
 
 Ce projet a été généré par [Angular CLI](https://github.com/angular/angular-cli) version 8.3.9.
 
+
+## Requis :
+Angular
+NodeJs
+Npm
+MongoDb
+
 ## Lancez le backend
 
 aller dans le dossier backend puis src 
