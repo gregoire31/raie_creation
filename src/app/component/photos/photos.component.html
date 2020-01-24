@@ -1,0 +1,46 @@
+<!-- <div id="profil-user">
+    <mat-card class="example-card"> -->
+
+<!-- <mat-card-header>
+            <img src="{{imgURL}}" mat-card-avatar class="example-header-image">
+            <mat-card-title>{{ user.email }}</mat-card-title>
+        </mat-card-header> -->
+<div fxLayout="row" class="margin-top-1">
+<div fxLayout="column" fxFlex="45%">
+
+    <mat-card-content>
+        <button mat-raised-button color="primary" (click)="fileInput.click()">
+            <input #fileInput type="file" accept='image/*' (change)="fileChangeBefore($event)" style="display: none;">
+            <mat-icon aria-hidden="false">photo_camera</mat-icon> Avant
+        </button>
+    </mat-card-content>
+    <img src="{{imgURLAvant}}"  class="image">
+</div>
+
+<div fxFlex="10%"></div>
+<div fxLayout="column" fxFlex="45%">
+    
+    <mat-card-content>
+        <button mat-raised-button color="primary" (click)="fileInput2.click()">
+            <input #fileInput2 type="file" accept='image/*' (change)="fileChangeAfter($event)" style="display: none;">
+            <mat-icon aria-hidden="false">photo_camera</mat-icon> Apres
+        </button>
+    </mat-card-content>
+    <img src="{{imgURLApres}}" class="image">
+</div>
+</div>
+
+
+<div class="enregistrerImages" *ngIf="imageAvant===true && imageApres===true">
+    <button mat-raised-button color="primary">Enregistrer</button>
+</div>
+
+<!-- <mat-card-actions *ngIf="btnBoolean">
+            <button class="add" (click)="upload()" mat-raised-button>
+                <mat-icon aria-hidden="false">save</mat-icon> Sauvegarder
+            </button>
+            <p *ngIf="btnValid">Nouvelle avatar sauvegardé !</p>
+        </mat-card-actions> -->
+
+<!-- </mat-card>
+</div> -->

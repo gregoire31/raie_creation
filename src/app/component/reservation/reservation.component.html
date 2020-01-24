@@ -1,0 +1,43 @@
+<div style="margin-left : 50px">
+<mat-form-field  class="datePicker">
+    <input matInput [min]="minDate" [matDatepickerFilter]="myFilter" [matDatepicker]="picker"
+        (dateChange)="changeDateCalendrier($event)" placeholder="Choisir une date" [formControl]="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+
+<!-- <div *ngFor="let heure of heureJournee; let i = index">
+    <mat-card (click)="selectionHorraire(i)"fxLayout="row" fxLayoutAlign="space-between">
+        <div *ngIf="heure.disponnible === true; else elseBlock">{{heure.heure}}</div>
+        <ng-template style="background-color: red;" #elseBlock>{{heure.heure}} {{heure.nomClient}}</ng-template>
+    </mat-card>
+</div> -->
+
+
+<div class="horraireRendezVous" *ngFor="let heure of heureJournee; let i = index">
+
+    <div *ngIf="heure.disponnible === true; else elseBlock">
+        <button class="buttonNonReserve" (click)="selectionHorraire(i)" mat-raised-button [color]="heureSelectionne === i ? 'accent' : 'primary'"
+            >{{heure.heure}}</button>
+    </div>
+    <ng-template  #elseBlock>
+        <button class="buttonReserve" disabled mat-raised-button > {{heure.heure}}
+            {{heure.nomClient}}</button>
+    </ng-template>
+
+</div>
+
+<div class="example-container">
+    <mat-form-field>
+        <input [(ngModel)]="nomClient" matInput placeholder="Nom">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input [(ngModel)]="numeroClient" matInput placeholder="Numéro de téléphone">
+    </mat-form-field>
+</div>
+
+<button mat-raised-button color="primary" (click)="reserver()">Réserver</button>
+
+</div>

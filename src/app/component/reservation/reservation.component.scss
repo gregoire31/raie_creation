@@ -1,0 +1,30 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .example-container > * {
+    width: 50%;
+  }
+
+  
+.horraireRendezVous {
+  width : 50%
+}
+.buttonReserve{
+  width : 100%;
+  background-color: "red"
+}
+.buttonNonReserve  {
+  width: 100%;
+  background-color: "green"
+}
+.buttonReserver{
+  position : center;
+  cursor : default !important
+}
+
+.mat-button.mat-primary  {
+  background-color: green;
+}
