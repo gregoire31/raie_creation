@@ -7,17 +7,9 @@
 </mat-form-field>
 
 
-<!-- <div *ngFor="let heure of heureJournee; let i = index">
-    <mat-card (click)="selectionHorraire(i)"fxLayout="row" fxLayoutAlign="space-between">
-        <div *ngIf="heure.disponnible === true; else elseBlock">{{heure.heure}}</div>
-        <ng-template style="background-color: red;" #elseBlock>{{heure.heure}} {{heure.nomClient}}</ng-template>
-    </mat-card>
-</div> -->
-
-
 <div class="horraireRendezVous" *ngFor="let heure of heureJournee; let i = index">
 
-    <div *ngIf="heure.disponnible === true; else elseBlock">
+    <div *ngIf="heure.disponible === true; else elseBlock">
         <button class="buttonNonReserve" (click)="selectionHorraire(i)" mat-raised-button [color]="heureSelectionne === i ? 'accent' : 'primary'"
             >{{heure.heure}}</button>
     </div>

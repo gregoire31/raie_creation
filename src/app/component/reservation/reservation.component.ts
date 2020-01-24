@@ -11,52 +11,52 @@ import { DialogErreurComponent } from 'src/app/dialog/dialog-erreur/dialog-erreu
 })
 export class ReservationComponent implements OnInit {
   date = new FormControl(new Date());
-  private minDate = new Date
-  private dateSelectionnee : string = ""
-  private heureSelectionne : number
-  private nomClient: string
-  private numeroClient: string
+  public minDate = new Date
+  public dateSelectionnee : string = ""
+  public heureSelectionne : number
+  public nomClient: string
+  public numeroClient: string
   
-  private heureJournee = [
+  public heureJournee = [
     {
       heure: '8h',
-      disponnible: true
+      disponible: true
     },
     {
       heure: '9h',
-      disponnible: true
+      disponible: true
     },
     {
       heure: '10h',
-      disponnible: true
+      disponible: true
     },
     {
       heure: '11h',
-      disponnible: true
+      disponible: true
     },
     {
       heure: '12h',
-      disponnible: true
+      disponible: true
     },
     {
       heure: '13h',
-      disponnible: true
+      disponible: true
     },
     {
       heure: '14h',
-      disponnible: true
+      disponible: true
     },
     {
       heure: '15h',
-      disponnible: true
+      disponible: true
     },
     {
       heure: '16h',
-      disponnible: true
+      disponible: true
     },
     {
       heure: '17h',
-      disponnible: true
+      disponible: true
     },
   ]
 
@@ -75,17 +75,15 @@ export class ReservationComponent implements OnInit {
   changeDateCalendrier(valeurDate) {
     this.heureSelectionne = undefined
     
-    // console.log(valeurDate.value);
     this.dateSelectionnee = this.datePipe.transform(valeurDate.value,'yyyy-MM-dd')
 
     for(let i = 0 ; i< this.heureJournee.length; i++){
-      this.heureJournee[i] = {heure : this.heureJournee[i].heure, disponnible : true}
+      this.heureJournee[i] = {heure : this.heureJournee[i].heure, disponible : true}
     }
     
     this.rendezVousService.recupererListeRdv(this.datePipe.transform(this.dateSelectionnee,'yyyy-MM-dd')).subscribe(data => {
 
       
-      // console.log(this.heureJournee);
       
 
       if(data.data.length> 0 ){
@@ -96,13 +94,12 @@ export class ReservationComponent implements OnInit {
           let heureJournee = this.heureJournee[reservation.heureReservation]
           this.heureJournee[reservation.heureReservation]  = reservation
           reservation.heure = heureJournee.heure
-          reservation.disponnible = false
+          reservation.disponible = false
           
           
         });
 
       }
-      console.log(this.heureJournee);
       
       
     })
@@ -119,14 +116,12 @@ export class ReservationComponent implements OnInit {
       if(data.data.length > 0){
 
         let reservations = data.data[0].reservation;
-        console.log(reservations);
-        
         
         reservations.forEach(reservation => {
           let heureJournee = this.heureJournee[reservation.heureReservation]
           this.heureJournee[reservation.heureReservation]  = reservation
           reservation.heure = heureJournee.heure
-          reservation.disponnible = false
+          reservation.disponible = false
           
         });
       }
@@ -137,7 +132,6 @@ export class ReservationComponent implements OnInit {
 
   selectionHorraire(i){
   this.heureSelectionne = i
-  console.log(this.heureSelectionne);
   
   }
 
@@ -150,15 +144,14 @@ export class ReservationComponent implements OnInit {
     if(this.heureSelectionne !== undefined && this.nomClient !== undefined && this.numeroClient !== undefined && this.dateSelectionnee !== undefined){
 
       this.rendezVousService.ajouterRdv(this.dateSelectionnee,this.heureSelectionne, this.nomClient, this.numeroClient).subscribe(data => {
-        console.log(data.data);
-        
+
         let reservations = data.data
           
           reservations.forEach(reservation => {
             let heureJournee = this.heureJournee[reservation.heureReservation]
             this.heureJournee[reservation.heureReservation]  = reservation
             reservation.heure = heureJournee.heure
-            reservation.disponnible = false
+            reservation.disponible = false
             
           });
       })

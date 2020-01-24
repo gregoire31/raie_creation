@@ -8,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class PhotosComponent implements OnInit {
   uploadedFilesBefore: Array < File > ;
   uploadedFilesAfter: Array < File > ;
-  private user : any = {}
+  public user : any = {}
   public imagePathAvant;
   public imagePathApres;
   imgURLApres : any;
   imgURLAvant : any;
   public message: string;
-  private imageAvant: boolean = false
-  private imageApres : boolean = false
+  public imageAvant: boolean = false
+  public imageApres : boolean = false
   constructor() { }
 
   ngOnInit() {
@@ -81,9 +81,6 @@ fileChangeAfter(element) {
   // }
 }
 
-  //afficher success
-  // this.btnValid = true;
-        
   
 
 
